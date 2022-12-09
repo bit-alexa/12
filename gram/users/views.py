@@ -1,7 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
-from pkg_resources import _
 from .forms import SignupForm, UserForm, ProfileForm
 from django.contrib.auth.models import User
 from django.contrib import messages
@@ -56,7 +55,7 @@ def edit_profile(request, pk):
             profile_form.save()
             return redirect('profile_page', pk=pk)
         else:
-            messages.error(request, _('Please correct the error below.'))
+            messages.error(request, 'Please correct the error below.')
     else:
         user_form = UserForm(instance=request.user)
         profile_form = ProfileForm(instance=request.user.profile)
